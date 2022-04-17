@@ -1,7 +1,7 @@
 alias jf="jq '.'"
 alias ag="ag --noheading"
 alias ls="ls -G"
-alias http=bat
+alias http=xh
 
 function line {
   cat $2 | head -n $1 | tail -1
@@ -13,7 +13,7 @@ function kills {
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export EDITOR='subl -w'
+export EDITOR='vim'
 export HISTSIZE=1000
 export HISTFILESIZE=10000
 
