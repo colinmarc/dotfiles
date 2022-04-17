@@ -1,0 +1,9 @@
+golang
+
+jq 
+ag
+xh
+selecta
+
+gpg2
+pinentry-mac

@@ -1,0 +1,11 @@
+[user]
+    email = hi@colinmarc.com
+    name = Colin Marc
+	signingkey = E39F94F867B146B272965B59C2D217F0BEFBB451
+[commit]
+    gpgsign = true
+[alias]
+    fixup = "!sh -c 'git commit --fixup $(git log --color --oneline --decorate HEAD^ | selecta | cut -c 6-12)'"
+    autorebase = "!sh -c 'git rebase --interactive --autosquash $(git branch --list --sort=-committerdate | tail -n +2 | selecta)'"
+[init]
+	defaultBranch = main

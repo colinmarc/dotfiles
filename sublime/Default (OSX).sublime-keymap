@@ -1,0 +1,12 @@
+[    
+	{ "keys": ["f12"], "command": "lsp_symbol_definition", "context": [{"key": "setting.lsp_active"}]},
+	{ "keys": ["f2"], "command": "lsp_symbol_rename", "context": [{"key": "setting.lsp_active"}]},
+	{ "keys": ["ctrl+h"], "command": "move", "args": {"by": "subwords", "forward": false} },
+	{ "keys": ["ctrl+t"], "command": "move", "args": {"by": "subword_ends", "forward": true} },
+	{ "keys": ["ctrl+shift+h"], "command": "move", "args": {"by": "subwords", "forward": false, "extend": true} },
+	{ "keys": ["ctrl+shift+t"], "command": "move", "args": {"by": "subword_ends", "forward": true, "extend": true} },
+	{ "keys": ["ctrl+g"], "command": "move", "args": {"by": "lines", "forward": false} },
+	{ "keys": ["ctrl+m"], "command": "move", "args": {"by": "lines", "forward": true} },
+	{ "keys": ["ctrl+shift+g"], "command": "move", "args": {"by": "lines", "forward": false, "extend": true} },
+	{ "keys": ["ctrl+shift+m"], "command": "move", "args": {"by": "lines", "forward": true, "extend": true} }
+]

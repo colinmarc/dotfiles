@@ -1,0 +1,6 @@
+// These settings override both User and Default settings for the Git Commit syntax
+{
+	"rulers": [72, 80],
+	"word_wrap": true,
+	"wrap_width": 80
+}
