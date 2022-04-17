@@ -30,7 +30,7 @@ gpgconf --launch gpg-agent
 export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
 # Go
-export GOPATH=/usr/local/golang
+export GOPATH="$HOME/.go"
 export PATH="$GOPATH/bin:$PATH"
 
 # Rust
