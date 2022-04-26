@@ -19,5 +19,10 @@ SUBLIME_USER_PACKAGE="$HOME/Library/ApplicationSupport/Sublime Text 3/Packages/U
 rm -rf "$SUBLIME_USER_PACKAGE"
 ln -s $DOTFILES/sublime "$SUBLIME_USER_PACKAGE"
 
+for NAME in setting.json keybindings.json; do
+	rm -f "$HOME/Library/Application\ Support/Code/User/$NAME"
+	ln -s "$DOTFILES/vscode/$NAME $HOME/Library/Application\ Support/Code/User/$NAME"
+done
+
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.iterm2"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
