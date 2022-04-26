@@ -38,3 +38,37 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # VS Code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+_has() {
+  whence -p "$1" > /dev/null
+}
+
+function _prompt_git {
+  [ "$(git rev-parse --is-inside-work-tree 2>/dev/null)" = 'true' ] || return
+
+  local branch modified
+  branch=$(git symbolic-ref --quiet --short HEAD)
+  if [ "$?" != 0 ]; then
+    branch="HEAD"
+  fi
+
+  if ! git diff-index --quiet --cached HEAD 2>/dev/null || ! git diff-files --quiet; then
+    modified=" %F{red}*%F{cyan}"
+  fi
+  echo "%F{cyan}[$branch$modified] "
+}
+
+function _set_prompt {
+  # Report exit status of last process if it was unsuccessful
+  PROMPT=$'%(?..%F{red}%?%f\n)'
+
+  # Git branch and modification status, if applicable
+  if _has git; then
+    PROMPT+=$(_prompt_git)
+  fi
+  # Path to file
+  PROMPT+='%F{cyan}%2~ %#%f '
+}
+
+precmd_functions+=( _set_prompt )
+
