@@ -15,7 +15,7 @@ for NAME in .zshrc .gitconfig .zshenv .iterm2 .vimrc .gnupg/gpg-agent.conf; do
 done
 
 echo "Installing sublime settings"
-SUBLIME_USER_PACKAGE="$HOME/Library/ApplicationSupport/Sublime Text 3/Packages/User"
+SUBLIME_USER_PACKAGE="$HOME/Library/Application Support/Sublime Text 3/Packages/User"
 rm -rf "$SUBLIME_USER_PACKAGE"
 ln -s $DOTFILES/sublime "$SUBLIME_USER_PACKAGE"
 
