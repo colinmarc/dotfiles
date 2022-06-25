@@ -1,11 +1,15 @@
 [user]
-    email = hi@colinmarc.com
-    name = Colin Marc
-	signingkey = E39F94F867B146B272965B59C2D217F0BEFBB451
+	email = hi@colinmarc.com
+	name = Colin Marc
+	signingkey = /Users/colinmarc/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/8ba0ab7ecafd3f65b41fe84146771a0c.pub
 [commit]
-    gpgsign = true
+	gpgsign = true
 [alias]
-    fixup = "!sh -c 'git commit --fixup $(git log --color --oneline --decorate HEAD^ | selecta | cut -c 6-12)'"
-    autorebase = "!sh -c 'git rebase --interactive --autosquash $(git branch --list --sort=-committerdate | tail -n +2 | selecta)'"
+	fixup = "!sh -c 'git commit --fixup $(git log --color --oneline --decorate HEAD^ | selecta | cut -c 6-12)'"
+	autorebase = "!sh -c 'git rebase --interactive --autosquash $(git branch --list --sort=-committerdate | tail -n +2 | selecta)'"
 [init]
 	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /Users/colinmarc/.ssh/allowed_signers
