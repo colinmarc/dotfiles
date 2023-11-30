@@ -24,6 +24,12 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=/Users/colinmarc/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
+# Tailscale
+alias tailscale=/Applications/Tailscale.app/Contents/MacOS/Tailscale
+
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 # Sublime Text
 export PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin:$PATH"
 
@@ -36,6 +42,18 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # VS Code
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+
+# Gcloud
+. /opt/google-cloud-sdk/completion.zsh.inc
+. /opt/google-cloud-sdk/path.zsh.inc
+
+# Vulkan
+export VULKAN_SDK="/opt/vulkan/1.3.261.1/macOS"
+export PATH="$VULKAN_SDK/bin:$PATH"
+export DYLD_LIBRARY_PATH="$VULKAN_SDK/lib:$DYLD_LIBRARY_PATH"
+export VK_ICD_FILENAMES="$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json"
+export VK_ADD_LAYER_PATH="$VULKAN_SDK/share/vulkan/explicit_layer.d"
+export VK_DRIVER_FILES="$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json"
 
 _has() {
   whence -p "$1" > /dev/null

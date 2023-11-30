@@ -1,7 +1,7 @@
 [user]
 	email = hi@colinmarc.com
 	name = Colin Marc
-	signingkey = /Users/colinmarc/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/8ba0ab7ecafd3f65b41fe84146771a0c.pub
+	signingkey = /Users/colinmarc/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/1e58cef08dc0b23400900d3df84c8ecd.pub
 [commit]
 	gpgsign = true
 [alias]
