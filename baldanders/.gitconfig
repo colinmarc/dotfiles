@@ -1,0 +1,13 @@
+[user]
+	email = hi@colinmarc.com
+	name = Colin Marc
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/colinmarc/.ssh/allowed_signers
+[include]
+	path = ".gitconfig.aliases"
