@@ -54,3 +54,16 @@ function _set_prompt {
 
 precmd_functions+=( _set_prompt )
 
+# znap
+if [[ ! -r ~/.zsh/plugins/znap/znap.zsh ]]; then
+    mkdir -p ~/.zsh/plugins
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsh/plugins/znap
+fi
+
+source ~/.zsh/plugins/znap/znap.zsh
+znap source zsh-users/zsh-autosuggestions
+znap source jimhester/per-directory-history
+
+for file in ~/.zsh/.zshrc.d/*; do
+  source $file
+done
