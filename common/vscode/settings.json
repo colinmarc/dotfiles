@@ -1,0 +1,16 @@
+{
+    "js/ts.implicitProjectConfig.experimentalDecorators": true,
+    "editor.inlineSuggest.enabled": true,
+    "[rust]": {
+        "editor.formatOnSave": true,
+        "editor.formatOnPaste": true
+    },
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": false,
+        "scminput": false
+    },
+    "git.openRepositoryInParentFolders": "always",
+    "window.commandCenter": false
+}
