@@ -1,9 +1,4 @@
-// Place your key bindings in this file to override the defaultsauto[]
 [
-    {
-        "key": "space",
-        "command": "workbench.action.gotoLine"
-    },
     {
         "key": "ctrl+g",
         "command": "-workbench.action.gotoLine"
