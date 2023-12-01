@@ -21,6 +21,7 @@ for NAME in .zshenv .zshrc .vimrc .gitconfig.aliases; do
 done
 
 mkdir -p ~/.zsh/.zshrc.d
+rm -f ~/.zsh/.zshrc.d/severian
 ln -s $DOTFILES/severian/.zshrc.severian ~/.zsh/.zshrc.d/severian
 
 for NAME in settings.json keybindings.json; do
