@@ -1,10 +1,10 @@
 * {
     padding: 1px;
-    font-family: Inconsolata, monospace
+    font-family: Inconsolata, monospace;
 }
 
 #workspaces button.focused {
-    color: #7eb08a
+    color: #7eb08a;
 }
 
 
