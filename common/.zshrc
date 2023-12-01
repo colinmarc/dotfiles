@@ -1,5 +1,5 @@
 alias ag="ag --noheading"
-alias ls="ls -G"
+alias ls="ls -G --color=always"
 alias http=xh
 
 function line {

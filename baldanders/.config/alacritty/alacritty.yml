@@ -194,7 +194,21 @@ font:
   #builtin_box_drawing: true
 
 # If `true`, bold text is drawn using the bright color variants.
-#draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: false
+
+# https://github.com/lucafalasco/matchalk
+colors:
+  primary:
+    background: '#273136'
+    foreground: '#d1ded3'
+  normal:
+    cyan: '#7eb08a'
+    blue: '#7ea4b0'
+    red: '#ff819f'
+    magenta: '#ba8eaf'
+    yellow: '#d2b48c'
+    white: '#d1ded3'
+    black: '#273136'
 
 # Colors (Tomorrow Night)
 #colors:
