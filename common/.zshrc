@@ -9,11 +9,17 @@ function line {
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 export EDITOR='vim'
+export HISTFILE=~/.zsh/history
 export HISTSIZE=1000
 export HISTFILESIZE=10000
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey '^[b' forward-word
+bindkey '^[f' backward-word
 
 _has() {
   whence -p "$1" > /dev/null
@@ -62,7 +68,6 @@ fi
 
 source ~/.zsh/plugins/znap/znap.zsh
 znap source zsh-users/zsh-autosuggestions
-znap source jimhester/per-directory-history
 
 for file in ~/.zsh/.zshrc.d/*; do
   source $file

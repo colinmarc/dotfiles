@@ -1,8 +1,7 @@
 [user]
 	email = hi@colinmarc.com
 	name = Colin Marc
-[commit]
-	gpgsign = true
+    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKNwBCHJZBCTqoviHicy+EBWBMtkAmI7GgY3dgof0SUA colinmarc@baldanders
 [init]
 	defaultBranch = main
 [gpg]

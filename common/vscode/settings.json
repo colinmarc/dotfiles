@@ -12,5 +12,5 @@
         "scminput": false
     },
     "git.openRepositoryInParentFolders": "always",
-    "window.commandCenter": false
+    "window.commandCenter": false,
 }

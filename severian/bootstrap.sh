@@ -8,7 +8,7 @@ DOTFILES=$(pwd)
 brew -h > /dev/null || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 cat $DOTFILES/severian/brew.txt | xargs brew install
 
-for NAME in .gitconfig .iterm2 .vimrc; do
+for NAME in .gitconfig .iterm2; do
 	echo "Installing $NAME"
 	rm -rf ~/$NAME > /dev/null 2>&1 || true
 	ln -s $DOTFILES/severian/$NAME ~/$NAME

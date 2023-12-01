@@ -1,0 +1,12 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "modules-left": ["clock", "sway/workspaces", "sway/mode"],
+    "modules-center": ["sway/window"],
+    "sway/window": {
+        "max-length": 50
+    },
+    "clock": {
+        "format-alt": "{:%a, %d. %b  %H:%M}"
+    }
+}

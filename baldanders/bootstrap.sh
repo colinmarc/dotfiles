@@ -3,12 +3,9 @@
 cd $(dirname $0)/..
 DOTFILES=$(pwd)
 
-rm -rf ~/.config/sway/config > /dev/null 2>&1 || true
-mkdir -p ~/.config/sway
-ln -s "$DOTFILES/baldanders/sway/config" ~/.config/sway/config
-
-for NAME in .zshenv .zshrc .vimrc .gitconfig.aliases; do
-	echo "Installing $NAME"
-	rm -rf ~/$NAME > /dev/null 2>&1 || true
-	ln -s $DOTFILES/common/$NAME ~/$NAME
+IFS=$'\n'
+for NAME in $(find "$DOTFILES/baldanders" -type f,l -printf '%P\n'); do
+	rm -f "$HOME/$NAME"
+	mkdir -p $(dirname "$HOME/$NAME")
+	ln -s "$DOTFILES/baldanders/$NAME" "$HOME/$NAME"
 done

@@ -17,3 +17,7 @@ export VK_DRIVER_FILES="$VULKAN_SDK/share/vulkan/icd.d/MoltenVK_icd.json"
 
 export GPG_TTY=$(tty)
 export SSH_AUTH_SOCK=/Users/colinmarc/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
+# Google Cloud
+. /opt/google-cloud-sdk/completion.zsh.inc
+. /opt/google-cloud-sdk/path.zsh.inc
