@@ -1,11 +1,26 @@
 {
     "layer": "top",
     "position": "top",
-    "modules-left": ["sway/workspaces", "sway/mode"],
-    "modules-center": [],
-    "modules-right": ["tray", "clock"],
+    "modules-left": [
+        "sway/workspaces",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "custom/waybar-mpris"
+    ],
+    "modules-right": [
+        "tray",
+        "clock"
+    ],
     "sway/window": {
         "max-length": 50
+    },
+    "custom/waybar-mpris": {
+        "return-type": "json",
+        "exec": "waybar-mpris --position --autofocus --pause \"\" --play \"\\uf8e3\"",
+        "on-click": "waybar-mpris --send toggle",
+        "on-click-right": "waybar-mpris --send player-next",
+        "escape": true
     },
     "clock": {
         "format": "{:%d.%m  %H:%M}"

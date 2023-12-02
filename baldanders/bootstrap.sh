@@ -3,7 +3,7 @@
 cd $(dirname $0)/..
 DOTFILES=$(pwd)
 
-sudo pamac install --no-confirm \
+pamac install --no-confirm \
 	gtk-engine-murrine \
 	gtk-engines \
 	matcha-gtk-theme \
@@ -12,9 +12,10 @@ sudo pamac install --no-confirm \
 	the_silver_searcher \
 	code \
 	neofetch \
-	bash-completion
+	bash-completion \
+	spotifyd
 
-sudo pamac build --no-confirm -k code-marketplace
+pamac build --no-confirm -k code-marketplace waybar-mpris
 cargo install kickoff
 
 IFS=$'\n'

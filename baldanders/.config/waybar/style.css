@@ -7,8 +7,19 @@
     color: #7eb08a;
 }
 
+#workspaces button.urgent {
+    color: #ba8eaf;
+}
 
-#mpd, #pulseaudio, #network, #cpu, #memory, #temperature, #clock, #window {
+
+#mpd,
+#pulseaudio,
+#network,
+#cpu,
+#memory,
+#temperature,
+#clock,
+#window {
     padding-left: 8px;
     padding-right: 8px;
 }
