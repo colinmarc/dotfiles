@@ -9,6 +9,7 @@ set $term alacritty
 
 set $menu kickoff -c ~/.config/kickoff/config.toml
 set $power_menu kickoff -c ~/.config/kickoff/config.toml --from-file ~/.config/kickoff/power.txt
+set $screenshot ~/.config/sway/screenshot.sh
 
 output DP-1 scale 2
 
@@ -23,6 +24,7 @@ input "type:keyboard" {
 bindsym $mod+r mode "resize"
 bindsym $mod+d exec $menu
 bindsym $mod+s exec $power_menu
+bindsym $mod+Shift+p exec $screenshot
 
 bindsym $mod+Return exec $term
 
@@ -176,3 +178,5 @@ include /etc/sway/config.d/*
 bar {
     swaybar_command waybar
 }
+
+exec wlsunset -l 52.52437 -L 13.41053

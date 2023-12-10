@@ -12,6 +12,9 @@ export EDITOR='vim'
 export HISTFILE=~/.zsh/history
 export HISTSIZE=1000
 export HISTFILESIZE=10000
+export SAVEHIST=10000
+setopt appendhistory
+
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx

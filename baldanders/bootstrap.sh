@@ -15,7 +15,7 @@ pamac install --no-confirm \
 	bash-completion \
 	spotifyd
 
-pamac build --no-confirm -k code-marketplace waybar-mpris
+pamac build --no-confirm -k code-marketplace
 cargo install kickoff
 
 IFS=$'\n'

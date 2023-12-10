@@ -3,4 +3,7 @@
     "workbench.colorTheme": "Matchalk",
     "editor.fontFamily": "'Inconsolata', 'Droid Sans Mono', 'monospace', monospace",
     "editor.formatOnSave": true,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.confirmDelete": false,
+    "git.openRepositoryInParentFolders": "never",
 }
