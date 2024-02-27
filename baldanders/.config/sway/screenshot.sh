@@ -1,3 +1,3 @@
 #!/bin/sh
 
-grim "$(slurp)" - | wl-copy
+grim -g "$(slurp)" - | wl-copy

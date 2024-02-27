@@ -33,6 +33,10 @@ bindsym $mod+q kill
 floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
+# Toggle scale.
+bindsym $mod+Alt+1 output DP-1 scale 1
+bindsym $mod+Alt+2 output DP-1 scale 2
+
 # Volume
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%

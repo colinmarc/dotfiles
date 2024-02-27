@@ -16,7 +16,7 @@ pamac install --no-confirm \
 	spotifyd
 
 pamac build --no-confirm -k code-marketplace
-cargo install kickoff
+cargo install kickoff eza tealdeer procs
 
 IFS=$'\n'
 for NAME in $(find "$DOTFILES/baldanders" -type f,l -printf '%P\n'); do

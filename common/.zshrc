@@ -1,5 +1,5 @@
 alias ag="ag --noheading"
-alias ls="ls -G --color=always"
+alias ls="eza"
 alias http=xh
 
 function line {
@@ -13,7 +13,7 @@ export HISTFILE=~/.zsh/history
 export HISTSIZE=1000
 export HISTFILESIZE=10000
 export SAVEHIST=10000
-setopt appendhistory
+setopt SHARE_HISTORY
 
 
 export CLICOLOR=1
@@ -21,8 +21,8 @@ export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
-bindkey '^[b' forward-word
-bindkey '^[f' backward-word
+bindkey '^[f' forward-word
+bindkey '^[b' backward-word
 
 _has() {
   whence -p "$1" > /dev/null
