@@ -7,7 +7,7 @@ pamac install --no-confirm \
 	gtk-engine-murrine \
 	gtk-engines        \
 	matcha-gtk-theme   \
-	ttf-inconsolata    \
+	ttf-inconsolata-nerd \
 	alacritty          \
 	code               \
 	neofetch           \
