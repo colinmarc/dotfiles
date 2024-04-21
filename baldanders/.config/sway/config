@@ -11,7 +11,7 @@ set $menu kickoff -c ~/.config/kickoff/config.toml
 set $power_menu kickoff -c ~/.config/kickoff/config.toml --from-file ~/.config/kickoff/power.txt
 set $screenshot ~/.config/sway/screenshot.sh
 
-output DP-1 scale 2
+output * scale 2
 
 input "type:keyboard" {
     xkb_layout us,de
@@ -34,8 +34,8 @@ floating_modifier $mod normal
 bindsym $mod+Shift+c reload
 
 # Toggle scale.
-bindsym $mod+Alt+1 output DP-1 scale 1
-bindsym $mod+Alt+2 output DP-1 scale 2
+bindsym $mod+Alt+1 output * scale 1
+bindsym $mod+Alt+2 output * scale 2
 
 # Volume
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
@@ -154,25 +154,24 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 
+include "kanagawa.conf"
 
-set $backg #1b2224
-set $base  #273136
-set $highl #0b705c
-set $text  #d1ded3
-set $alert #ba8eaf
+set $backg $sumiInk1
+set $base  $sumiInk0
+set $highl $waveBlue2
+set $text  $fujiWhite
+set $alert $roninYellow
 
 output * bg $base solid_color
 
 # Basic color configuration using the Base16 variables for windows and borders.
-# Property Name         Border  BG      Text    Indicator Child Border
-client.focused          $highl  $highl  $text   $highl  $highl 
+# Property Name         Border  BG      Text    Indicator Child BordeR
+client.focused          $highl  $backg  $text   $highl  $highl 
 client.focused_inactive $backg  $backg  $text   $backg  $backg
 client.unfocused        $backg  $backg  $text   $backg  $backg  
 client.urgent           $alert  $alert  $text   $alert  $alert 
-client.placeholder      $base   $base   $text   $base   $base  
-client.background       $base  
 
-default_border pixel 2
+default_border pixel 1
 default_floating_border pixel 2
 titlebar_padding 1
 titlebar_border_thickness 0

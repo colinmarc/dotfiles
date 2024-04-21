@@ -1,4 +1,5 @@
-alias ag="ag --noheading"
+alias ag="rg --no-heading"
+alias rg="rg --no-heading"
 alias ls="eza"
 alias http=xh
 
@@ -14,7 +15,6 @@ export HISTSIZE=1000
 export HISTFILESIZE=10000
 export SAVEHIST=10000
 setopt SHARE_HISTORY
-
 
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx

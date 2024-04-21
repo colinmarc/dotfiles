@@ -1,3 +1,4 @@
 [alias]
-	fixup = "!sh -c 'git commit --fixup $(git log --color --oneline --decorate HEAD^ | selecta | cut -c 6-12)'"
-	autorebase = "!sh -c 'git rebase --interactive --autosquash $(git branch --list --sort=-committerdate | tail -n +2 | selecta)'"
+	fu = fixup
+	autorebase = "!git rebase --interactive --autosquash \"${1:-main}\" #"
+	ar = autorebase

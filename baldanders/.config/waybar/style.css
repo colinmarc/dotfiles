@@ -1,14 +1,22 @@
-* {
+window {
     padding: 1px;
     font-family: Inconsolata, monospace;
+    background: #16161D;
+    color: #DCD7BA;
+}
+
+#workspaces button {
+    padding: 1px;
+    margin: 1px;
+    border-radius: 5px;
 }
 
 #workspaces button.focused {
-    color: #7eb08a;
+    border: 1px solid #DCD7BA;
 }
 
 #workspaces button.urgent {
-    color: #ba8eaf;
+    color: #FF9E3B;
 }
 
 #mpd,

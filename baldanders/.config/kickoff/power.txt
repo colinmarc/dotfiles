@@ -1,3 +1,5 @@
+screen off = swaymsg 'output * dpms off' && dim -d 0 -a 1; swaymsg 'output * dpms on'
 suspend = systemctl suspend
 shutdown = systemctl poweroff
 reboot = systemctl reboot
+
