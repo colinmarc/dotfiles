@@ -162,7 +162,7 @@ set $highl $waveBlue2
 set $text  $fujiWhite
 set $alert $roninYellow
 
-output * bg $base solid_color
+output * background ~/Downloads/kanagawa.jpg fill
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child BordeR
@@ -172,7 +172,7 @@ client.unfocused        $backg  $backg  $text   $backg  $backg
 client.urgent           $alert  $alert  $text   $alert  $alert 
 
 default_border pixel 1
-default_floating_border pixel 2
+default_floating_border pixel 1
 titlebar_padding 1
 titlebar_border_thickness 0
 
