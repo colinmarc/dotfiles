@@ -92,6 +92,13 @@ vim.diagnostic.config({
   signs = false,
 })
 
+-- Filetypes
+vim.filetype.add {
+  extension = {
+    ['slang'] = 'slang'
+  }
+}
+
 -- Plugins
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -232,6 +239,10 @@ require('lazy').setup({
             }
           }
         }
+      }
+
+      require('lspconfig').slangd.setup {
+        filetypes = { 'slang' }
       }
 
       -- Diagnostic movement
