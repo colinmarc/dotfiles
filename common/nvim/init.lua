@@ -78,15 +78,6 @@ vim.keymap.set('n', '<up>', '<C-w><C-k>')
 -- Open config
 vim.keymap.set('n', '<leader>oc', '<cmd>tabnew ~/.config/nvim/init.lua<cr>')
 
--- Highlight when yanking (copying) text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
-
 vim.diagnostic.config({
   virtual_text = false,
   signs = false,
@@ -108,10 +99,32 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
-  'tpope/vim-sleuth',        -- Detect tabstop and shiftwidth automatically
-  'airblade/vim-rooter',     -- Chdir to project root
+  'tpope/vim-sleuth',               -- Detect tabstop and shiftwidth automatically
+  'airblade/vim-rooter',            -- Chdir to project root
+  'thirtythreeforty/lessspace.vim', -- Strip whitespace
+  'junegunn/vim-easy-align',        -- Alignment of comments etc
   {
-    'rebelot/kanagawa.nvim', -- Match terminal colors
+    'gbprod/yanky.nvim',
+    init = function()
+      require('yanky').setup {
+        highlight = {
+          on_put = true,
+          on_yank = true,
+          timer = 500,
+        },
+      }
+
+      vim.keymap.set({'n','x'}, 'p', '<Plug>(YankyPutAfter)')
+      vim.keymap.set({'n','x'}, 'P', '<Plug>(YankyPutBefore)')
+
+      vim.keymap.set('n', '<c-p>', '<Plug>(YankyPreviousEntry)')
+      vim.keymap.set('n', '<c-n>', '<Plug>(YankyNextEntry)')
+
+      vim.keymap.set({'n','x'}, '<leader>sp', '<Plug>(YankyRingHistory)')
+    end,
+  },
+  {
+    'rebelot/kanagawa.nvim',
     priority = 1000,
     init = function()
       vim.cmd.colorscheme 'kanagawa-wave'
@@ -172,11 +185,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
-      vim.keymap.set('n', '<leader>sp', function()
+      vim.keymap.set('n', '<leader>sr', function()
         extensions.repo.list {
           search_paths = {'~/dev', '~/src' }
         }
-      end, { desc = '[S]earch [P]rojects' })
+      end, { desc = '[S]earch [R]epos' })
 
       vim.keymap.set('n', '<leader>sP', function()
         builtin.commands(require('telescope.themes').get_ivy {
@@ -232,7 +245,7 @@ require('lazy').setup({
         settings = {
           ['rust-analyzer'] = {
             cargo = {
-              allFeatures = true
+              features = 'all'
             },
             check = {
               command = 'clippy'

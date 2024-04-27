@@ -1,4 +1,4 @@
 [alias]
 	fu = fixup
-	autorebase = "!git rebase --interactive --autosquash \"${1:-main}\" #"
+	autorebase = "!git rebase --interactive --autosquash \"${1:-origin/main}\" #"
 	ar = autorebase

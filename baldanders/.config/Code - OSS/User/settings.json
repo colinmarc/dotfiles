@@ -1,6 +1,6 @@
 {
     "terminal.integrated.fontFamily": "'Inconsolata', monospace",
-    "workbench.colorTheme": "Matchalk",
+    "workbench.colorTheme": "Kanagawa",
     "editor.fontFamily": "'Inconsolata', 'Droid Sans Mono', 'monospace', monospace",
     "editor.formatOnSave": true,
     "explorer.confirmDragAndDrop": false,

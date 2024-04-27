@@ -1,7 +1,7 @@
 [user]
 	email = hi@colinmarc.com
 	name = Colin Marc
-    signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKNwBCHJZBCTqoviHicy+EBWBMtkAmI7GgY3dgof0SUA colinmarc@baldanders
+        signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKNwBCHJZBCTqoviHicy+EBWBMtkAmI7GgY3dgof0SUA colinmarc@baldanders
 [init]
 	defaultBranch = main
 [gpg]
@@ -10,3 +10,4 @@
 	allowedSignersFile = /home/colinmarc/.ssh/allowed_signers
 [include]
 	path = ".gitconfig.aliases"
+
