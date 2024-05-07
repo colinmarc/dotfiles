@@ -104,6 +104,19 @@ require('lazy').setup({
   'thirtythreeforty/lessspace.vim', -- Strip whitespace
   'junegunn/vim-easy-align',        -- Alignment of comments etc
   {
+    "echasnovski/mini.comment",
+    opts = {
+      mappings = {
+        comment = 'cc',
+        comment_line = '',
+        comment_visual = '<leader>c',
+        textobject = 'cc',
+      }
+    }
+  },
+  { "echasnovski/mini.pairs", opts = {} },
+  { "echasnovski/mini.surround", opts = {} },
+  {
     'gbprod/yanky.nvim',
     init = function()
       require('yanky').setup {
