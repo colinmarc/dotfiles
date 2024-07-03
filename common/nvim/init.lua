@@ -99,6 +99,66 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
+  {
+    "nvim-treesitter/nvim-treesitter",
+    version = false, -- last release is way too old and doesn't work on Windows
+    build = ":TSUpdate",
+    -- init = function(plugin)
+    --   -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
+    --   -- This is needed because a bunch of plugins no longer `require("nvim-treesitter")`, which
+    --   -- no longer trigger the **nvim-treesitter** module to be loaded in time.
+    --   -- Luckily, the only things that those plugins need are the custom queries, which we make available
+    --   -- during startup.
+    --   require("lazy.core.loader").add_to_rtp(plugin)
+    --   require("nvim-treesitter.query_predicates")
+    -- end,
+    cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
+    opts = {
+      highlight = { enable = true },
+      indent = { enable = true },
+      ensure_installed = {
+        "bash",
+        "c",
+        "diff",
+        "html",
+        "javascript",
+        "jsdoc",
+        "json",
+        "jsonc",
+        "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
+        "printf",
+        "python",
+        "query",
+        "regex",
+        "rust",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+      },
+      textobjects = {
+        move = {
+          enable = true,
+          goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer" },
+          goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer" },
+          goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer" },
+          goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer" },
+        },
+      },
+    },
+    config = function(_, opts)
+      require('nvim-treesitter.install').prefer_git = true
+      require('nvim-treesitter.configs').setup(opts)
+    end,
+  },
+  'nvim-treesitter/nvim-treesitter-textobjects',
   'tpope/vim-sleuth',               -- Detect tabstop and shiftwidth automatically
   'airblade/vim-rooter',            -- Chdir to project root
   'thirtythreeforty/lessspace.vim', -- Strip whitespace
@@ -133,7 +193,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<c-p>', '<Plug>(YankyPreviousEntry)')
       vim.keymap.set('n', '<c-n>', '<Plug>(YankyNextEntry)')
 
-      vim.keymap.set({'n','x'}, '<leader>sp', '<Plug>(YankyRingHistory)')
     end,
   },
   {
@@ -231,6 +290,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Ring history
+      vim.keymap.set({'n','x'}, '<leader>sp', '<Plug>(YankyRingHistory)')
     end,
   },
   { -- LSP Configuration & Plugins
@@ -419,6 +481,34 @@ require('lazy').setup({
       }
     end,
   },
+  {
+    "echasnovski/mini.ai",
+    config = function()
+      local ai = require("mini.ai")
+      ai.setup {
+        n_lines = 500,
+        custom_textobjects = {
+          o = ai.gen_spec.treesitter({ -- code block
+            a = { "@block.outer", "@conditional.outer", "@loop.outer" },
+            i = { "@block.inner", "@conditional.inner", "@loop.inner" },
+          }),
+          f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }), -- function
+          c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }), -- class
+          t = { "<([%p%w]-)%f[^<%w][^<>]->.-</%1>", "^<.->().*()</[^/]->$" }, -- tags
+          d = { "%f[%d]%d+" }, -- digits
+          e = { -- Word with case
+            { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
+            "^().*()$",
+          },
+          -- i = LazyVim.mini.ai_indent, -- indent
+          -- g = LazyVim.mini.ai_buffer, -- buffer
+          u = ai.gen_spec.function_call(), -- u for "Usage"
+          U = ai.gen_spec.function_call({ name_pattern = "[%w_]" }), -- without dot in function name
+          s = ai.gen_spec.treesitter({ a = {"@statement.outer", "@assignment.outer" }, i = "@assignment.inner" })
+        },
+      }
+    end,
+  }
 })
 
 -- vim: ts=2 sts=2 sw=2 et
