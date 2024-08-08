@@ -1,6 +1,9 @@
 -- By default title is off. Needed for detecting window as neovim instance (sworkstyle)
 vim.cmd "set title"
 
+-- Setup alt on neovide.
+vim.g.neovide_macos_alt_is_meta = true
+
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -43,9 +46,14 @@ vim.keymap.set('n', '<leader>d', function()
 end)
 
 -- Ingrained muscle memory
-vim.keymap.set('n', '<C-s>', '<cmd>w<cr>')
+if vim.fn.has('mac') then
+  vim.keymap.set('n', '<D-s>', '<cmd>w<cr>')
+  vim.keymap.set('v', '<D-s>', '<cmd>w<cr>')
+else
+  vim.keymap.set('n', '<C-s>', '<cmd>w<cr>')
+  vim.keymap.set('v', '<C-s>', '<cmd>w<cr>')
+end
 
--- Caves of Qud movement
 local movement_map = function(src, dst)
   vim.keymap.set('n', src, dst, { noremap = true, nowait = true, buffer = true })
   vim.keymap.set('v', src, dst, { noremap = true, nowait = true, buffer = true })
@@ -55,6 +63,8 @@ end
 vim.api.nvim_create_autocmd('BufEnter', {
   desc = 'Map movement keybindings',
   group = vim.api.nvim_create_augroup('caves-of-qud-movement', { clear = true }),
+
+  -- Caves of Qud movement
   callback = function()
     movement_map('h', 'h')
     movement_map('t', 'l')
