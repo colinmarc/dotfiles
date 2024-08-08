@@ -9,7 +9,7 @@ function line {
 
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-export EDITOR='vim'
+export EDITOR='nvim'
 export HISTFILE=~/.zsh/history
 export HISTSIZE=1000
 export HISTFILESIZE=10000
@@ -19,7 +19,7 @@ setopt SHARE_HISTORY
 export CLICOLOR=1
 export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 
-bindkey -v
+#bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey '^[f' forward-word
 bindkey '^[b' backward-word
