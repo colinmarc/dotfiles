@@ -1,8 +1,12 @@
 -- By default title is off. Needed for detecting window as neovim instance (sworkstyle)
 vim.cmd "set title"
 
--- Setup alt on neovide.
-vim.g.neovide_macos_alt_is_meta = true
+-- Setup alt on neovide, and some appearance tweaks.
+if vim.g.neovide then
+  vim.o.guifont = "Monaco Nerd Font:h12"
+  vim.g.neovide_transparency = 0.85
+  vim.g.neovide_input_macos_option_key_is_meta = 'only_left'
+end
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -16,6 +20,9 @@ vim.opt.undofile = true           -- Saves history to a file
 vim.opt.updatetime = 250
 vim.opt.timeoutlen = 300
 vim.opt.splitright = true -- Split right
+
+-- Global statusbar
+vim.opt.laststatus = 3
 
 -- Highlight on search
 vim.opt.hlsearch = true
@@ -47,11 +54,11 @@ end)
 
 -- Ingrained muscle memory
 if vim.fn.has('mac') then
-  vim.keymap.set('n', '<D-s>', '<cmd>w<cr>')
-  vim.keymap.set('v', '<D-s>', '<cmd>w<cr>')
+  vim.keymap.set({'n', 'x', 'v'}, '<D-s>', '<cmd>w<cr>')
+  vim.keymap.set({'n', 'x', 'v'}, '<D-W>', '<cmd>wqa<cr>')
 else
-  vim.keymap.set('n', '<C-s>', '<cmd>w<cr>')
-  vim.keymap.set('v', '<C-s>', '<cmd>w<cr>')
+  vim.keymap.set({'n', 'x', 'v'}, '<C-s>', '<cmd>w<cr>')
+  vim.keymap.set({'n', 'x', 'v'}, '<C-W>', '<cmd>wqa<cr>')
 end
 
 local movement_map = function(src, dst)
@@ -145,6 +152,7 @@ require('lazy').setup({
         "query",
         "regex",
         "rust",
+        "swift",
         "toml",
         "tsx",
         "typescript",
@@ -167,6 +175,14 @@ require('lazy').setup({
       require('nvim-treesitter.install').prefer_git = true
       require('nvim-treesitter.configs').setup(opts)
     end,
+  },
+  {
+    "NoahTheDuke/vim-just",
+    ft = { "just" },
+  },
+  {
+    'keith/swift.vim',
+    ft = { 'swift' }
   },
   'nvim-treesitter/nvim-treesitter-textobjects',
   'tpope/vim-sleuth',               -- Detect tabstop and shiftwidth automatically
@@ -203,6 +219,8 @@ require('lazy').setup({
       vim.keymap.set('n', '<c-p>', '<Plug>(YankyPreviousEntry)')
       vim.keymap.set('n', '<c-n>', '<Plug>(YankyNextEntry)')
 
+      -- Ring history
+      vim.keymap.set({'n','x'}, '<leader>sy', '<cmd>YankyRingHistory<cr>')
     end,
   },
   {
@@ -210,7 +228,7 @@ require('lazy').setup({
     priority = 1000,
     init = function()
       vim.cmd.colorscheme 'kanagawa-wave'
-      vim.cmd.hi 'Pmenu guibg=none'
+      -- vim.cmd.hi 'Pmenu guibg=none'
       vim.cmd.hi 'Normal guibg=none'
     end,
   },
@@ -262,7 +280,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ss', builtin.builtin, { desc = '[S]earch [S]elect Telescope' })
       vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
       vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-      vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+      vim.keymap.set('n', '<leader>se', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
@@ -273,7 +291,7 @@ require('lazy').setup({
         }
       end, { desc = '[S]earch [R]epos' })
 
-      vim.keymap.set('n', '<leader>sP', function()
+      vim.keymap.set('n', '<leader>sp', function()
         builtin.commands(require('telescope.themes').get_ivy {
           winblend = 10,
           previewer = false,
@@ -287,8 +305,6 @@ require('lazy').setup({
         })
       end, { desc = '[/] Fuzzily search in current buffer' })
 
-      -- It's also possible to pass additional configuration options.
-      --  See `:help telescope.builtin.live_grep()` for information about particular keys
       vim.keymap.set('n', '<leader>s/', function()
         builtin.live_grep {
           grep_open_files = true,
@@ -296,29 +312,14 @@ require('lazy').setup({
         }
       end, { desc = '[S]earch [/] in Open Files' })
 
-      -- Shortcut for searching your Neovim configuration files
-      vim.keymap.set('n', '<leader>sn', function()
-        builtin.find_files { cwd = vim.fn.stdpath 'config' }
-      end, { desc = '[S]earch [N]eovim files' })
-
-      -- Ring history
-      vim.keymap.set({'n','x'}, '<leader>sp', '<Plug>(YankyRingHistory)')
     end,
   },
   { -- LSP Configuration & Plugins
     'neovim/nvim-lspconfig',
     dependencies = {
       'lukas-reineke/lsp-format.nvim',
-
-      -- Useful status updates for LSP.
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', opts = {} },
-
-      -- `neodev` configures Lua LSP for your Neovim config, runtime and plugins
-      -- used for completion, annotations and signatures of Neovim apis
-      { 'folke/neodev.nvim', opts = {} },
-
       { 'folke/trouble.nvim' },
+      { 'folke/lazydev.nvim', ft = "lua", opts = {} },
       { 'aznhe21/actions-preview.nvim', opts = {} },
     },
     config = function()
@@ -343,9 +344,30 @@ require('lazy').setup({
         filetypes = { 'slang' }
       }
 
+      require('lspconfig').sourcekit.setup({
+        on_attach = on_attach,
+      })
+
       -- Diagnostic movement
       local trouble = require('trouble');
-      trouble.setup { auto_close = true }
+      trouble.setup {
+        auto_close = true,
+        modes = {
+          cascade = {
+            mode = "diagnostics", -- inherit from diagnostics mode
+            filter = function(items) -- show highest severity only
+              local severity = vim.diagnostic.severity.HINT
+              for _, item in ipairs(items) do
+                severity = math.min(severity, item.severity)
+              end
+
+              return vim.tbl_filter(function(item)
+                return item.severity == severity or item.buf == 0
+              end, items)
+            end,
+          }
+        }
+      }
 
       local trouble_bufsetup = function()
         if trouble.is_open() then
@@ -355,28 +377,32 @@ require('lazy').setup({
       end
 
       vim.keymap.set('n', '<leader>e', function()
-        trouble.toggle()
+        if trouble.is_open('cascade') then
+          trouble.toggle('cascade')
+        else
+          trouble.open('cascade')
+        end
+
         trouble_bufsetup()
       end, { desc = 'Show diagnostic [E]rror messages'})
 
       vim.keymap.set('n', '<A-[>', function()
         if #vim.diagnostic.get() > 0 then
-          trouble.open()
+          trouble.open('cascade')
           trouble_bufsetup()
-          trouble.previous({ skip_groups = true, jump = true })
+          trouble.prev({ skip_groups = true, jump = true })
         end
       end, { nowait = true, desc = 'Go to previous diagnostic message'})
 
       vim.keymap.set('n', '<A-]>', function()
         if #vim.diagnostic.get() > 0 then
-          trouble.open()
+          trouble.open('cascade')
           trouble_bufsetup()
           trouble.next({ skip_groups = true, jump = true })
         end
       end, { nowait = true, desc = 'Go to next diagnostic message'})
 
       vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
         callback = function(event)
           local map = function(keys, func, desc)
             vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
@@ -384,11 +410,10 @@ require('lazy').setup({
 
           local telescope = require('telescope.builtin')
           map('<leader>gd', telescope.lsp_definitions, '[G]oto [D]efinition')
+          map('<leader>gD', telescope.lsp_type_definitions, 'Type [D]efinition')
           map('<leader>gr', telescope.lsp_references, '[G]oto [R]eferences')
-          map('<leader>gI', telescope.lsp_implementations, '[G]oto [I]mplementation')
-          map('<leader>D', telescope.lsp_type_definitions, 'Type [D]efinition')
-          map('<leader>ds', telescope.lsp_document_symbols, '[D]ocument [S]ymbols')
-          map('<leader>ws', telescope.lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          map('<leader>sd', telescope.lsp_document_symbols, '[S]earch [D]efinitions')
+          map('<leader>sD', telescope.lsp_workspace_symbols, '[S]earch [D]efinitions in workspace')
           map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
           map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
           map('K', vim.lsp.buf.hover, 'Hover Documentation')
@@ -434,7 +459,9 @@ require('lazy').setup({
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       -- Format-on-save.
-      require('lsp-format').setup()
+      require('lsp-format').setup({
+        exclude
+      })
     end
   },
   { -- Autocompletion
@@ -518,6 +545,143 @@ require('lazy').setup({
         },
       }
     end,
+  },
+  -- xcode
+  {
+    "wojciech-kulik/xcodebuild.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-neo-tree/neo-tree.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    config = function()
+      require("xcodebuild").setup({})
+
+      vim.keymap.set("n", "<leader>xr", "<cmd>XcodebuildBuildRun<cr>", { desc = "Build & Run Project" })
+    end,
+  },
+  -- UI
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-web-devicons' },
+    opts = function()
+      local opts = {
+        options = {
+          disabled_filetypes = { "neo-tree", "trouble" },
+          theme = 'auto'
+        },
+        sections = {
+          lualine_a = { "mode" },
+          lualine_b = { "branch" },
+          lualine_c = { "diagnostics" },
+          lualine_x = {
+            {
+              require("noice").api.status.search.get,
+              cond = require("noice").api.status.search.has,
+              color = { fg = "#ff9e64" },
+            },
+          },
+          lualine_y = {},
+          lualine_z = { 'location', 'filename', 'filetype' }
+        }
+      }
+
+      return opts
+    end
+  },
+  {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v3.x",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+        "MunifTanjim/nui.nvim",
+      },
+      init = function ()
+        require('neo-tree').setup({
+           event_handlers = {
+            {
+              event = "file_open_requested",
+              handler = function()
+                -- auto close
+                require("neo-tree.command").execute({ action = "close" })
+              end
+            },
+          },
+          filesystem = {
+            hijack_netrw_behavior = "open_current",
+            window = {
+              mappings = {
+                ["M"] = "move",
+                ["m"] = "none",
+                ["R"] = "rename",
+                ["<C-v>"] = "open_vsplit",
+              }
+            }
+          }
+        })
+
+        vim.keymap.set('n', '<leader>t', '<cmd>Neotree toggle position=left reveal=true<cr>')
+      end
+  },
+  {
+    "folke/noice.nvim",
+    tag = "v4.4.7",
+    event = "VeryLazy",
+    opts = {
+      routes = {
+        {
+          filter = {
+            event = "msg_show",
+            kind = "search_count",
+          },
+          opts = { skip = true },
+        },
+      },
+      views = {
+        cmdline_popup = {
+          position = {
+            row = 5,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = "auto",
+          },
+        },
+        popupmenu = {
+          relative = "editor",
+          position = {
+            row = 8,
+            col = "50%",
+          },
+          size = {
+            width = 60,
+            height = 10,
+          },
+          border = {
+            style = "rounded",
+            padding = { 0, 1 },
+          },
+          win_options = {
+            winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+          },
+        },
+      },
+      lsp = {
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+        },
+      },
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    }
   }
 })
 

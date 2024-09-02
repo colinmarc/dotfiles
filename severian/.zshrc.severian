@@ -2,7 +2,7 @@
 alias tailscale=/Applications/Tailscale.app/Contents/MacOS/Tailscale
 
 # Neovide
-alias neovide="/Applications/neovide.app/Contents/MacOS/neovide --frame transparent --maximize --fork"
+alias neovide="/APplications/neovide.app/Contents/MacOS/neovide --frame transparent --maximized --fork"
 
 # Homebrew
 eval "$(/opt/homebrew/bin/brew shellenv)"

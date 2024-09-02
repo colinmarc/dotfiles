@@ -1,9 +1,11 @@
 golang
 
-jq 
+jq
 ag
 xh
 selecta
 
 gpg2
 pinentry-mac
+
+xcode-build-server
