@@ -12,3 +12,5 @@
 	path = ".gitconfig.aliases"
 [commit]
 	gpgsign = true
+[core]
+	hooksPath = /home/colinmarc/.config/git/hooks
