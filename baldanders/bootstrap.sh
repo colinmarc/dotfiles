@@ -19,7 +19,7 @@ pamac install --no-confirm \
 	glow               \
 	fzf                \
 
-pamac build --no-confirm -k code-marketplace git-fixup
+pamac build --no-confirm -k code-marketplace git-fixup protobuf-language-server-git
 cargo install kickoff eza tealdeer procs dim-screen
 
 IFS=$'\n'

@@ -75,3 +75,5 @@ znap source zsh-users/zsh-autosuggestions
 for file in ~/.zsh/.zshrc.d/*; do
   source $file
 done
+
+. "$HOME/.local/share/../bin/env"

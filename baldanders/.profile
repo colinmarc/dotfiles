@@ -12,3 +12,4 @@ export QT_WAYLAND_DISABLE_WINDOWDECORATION="1"
 export GTK_THEME=Matcha-dark-sea
 
 export PATH="$HOME/.cargo/bin:$HOME/.go/bin:$PATH"
+. "$HOME/.local/share/../bin/env"

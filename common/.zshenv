@@ -5,9 +5,6 @@ export PATH="$GOPATH/bin:$PATH"
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# Ruby
-export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
-
 # Slang
 export SLANG_DIR="/opt/slang"
 export PATH="$SLANG_DIR/bin:$PATH"
