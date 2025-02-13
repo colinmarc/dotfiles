@@ -53,13 +53,10 @@ vim.keymap.set('n', '<leader>d', function()
 end)
 
 -- Ingrained muscle memory
-if vim.fn.has('mac') then
-  vim.keymap.set({'n', 'x', 'v'}, '<D-s>', '<cmd>w<cr>')
-  vim.keymap.set({'n', 'x', 'v'}, '<D-W>', '<cmd>wqa<cr>')
-else
-  vim.keymap.set({'n', 'x', 'v'}, '<C-s>', '<cmd>w<cr>')
-  vim.keymap.set({'n', 'x', 'v'}, '<C-W>', '<cmd>wqa<cr>')
-end
+vim.keymap.set({'n', 'x', 'v'}, '<C-s>', '<cmd>w<cr>')
+vim.keymap.set({'n', 'x', 'v'}, '<C-W>', '<cmd>wqa<cr>')
+
+vim.keymap.set('n', '<C-d>', '*Ncgn')
 
 local movement_map = function(src, dst)
   vim.keymap.set('n', src, dst, { noremap = true, nowait = true, buffer = true })
@@ -118,7 +115,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   {
     "nvim-treesitter/nvim-treesitter",
-    version = false, -- last release is way too old and doesn't work on Windows
     build = ":TSUpdate",
     -- init = function(plugin)
     --   -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -136,6 +132,7 @@ require('lazy').setup({
       ensure_installed = {
         "bash",
         "c",
+        "capnp",
         "diff",
         "html",
         "javascript",
@@ -152,7 +149,6 @@ require('lazy').setup({
         "query",
         "regex",
         "rust",
-        "swift",
         "toml",
         "tsx",
         "typescript",
@@ -184,6 +180,7 @@ require('lazy').setup({
     'keith/swift.vim',
     ft = { 'swift' }
   },
+  {'akinsho/git-conflict.nvim', version = "*", config = true},
   'nvim-treesitter/nvim-treesitter-textobjects',
   'tpope/vim-sleuth',               -- Detect tabstop and shiftwidth automatically
   'airblade/vim-rooter',            -- Chdir to project root
@@ -327,7 +324,18 @@ require('lazy').setup({
 
       require('lspconfig').lua_ls.setup {}
       require('lspconfig').rust_analyzer.setup {
+
         on_attach = on_attach,
+        on_init = function (client)
+          local path = client.workspace_folders[1].name
+
+          if path == '/home/colinmarc/dev/rustix' then
+            client.config.settings["rust-analyzer"].cargo.features = { "net" }
+          end
+
+          client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+          return true
+        end,
         settings = {
           ['rust-analyzer'] = {
             cargo = {
@@ -335,7 +343,10 @@ require('lazy').setup({
             },
             check = {
               command = 'clippy'
-            }
+            },
+            rustfmt = {
+                extraArgs = { "+nightly", },
+            },
           }
         }
       }
