@@ -1,0 +1,36 @@
+[
+  {
+    "bindings": {
+      "left": ["workspace::ActivatePaneInDirection", "Left"],
+      "right": ["workspace::ActivatePaneInDirection", "Right"],
+      "up": ["workspace::ActivatePaneInDirection", "Up"],
+      "down": ["workspace::ActivatePaneInDirection", "Down"]
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-[": "pane::ActivatePrevItem",
+      "alt-]": "pane::ActivateNextItem",
+      "ctrl-alt-w": ["pane::CloseCleanItems", { "close_pinned": false }]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "h": "vim::Left",
+      "t": "vim::Right",
+      "g": "vim::Up",
+      "m": "vim::Down",
+      "ctrl-g": ["editor::MoveUpByLines", { "lines": 50 }],
+      "ctrl-m": ["editor::MoveDownByLines", { "lines": 50 }],
+      "alt-h": "vim::PreviousWordStart",
+      "alt-t": "vim::NextWordStart",
+      "alt-g": "editor::MoveToStartOfParagraph",
+      "alt-m": "editor::MoveToEndOfParagraph",
+      "ctrl-d": ["editor::SelectNext", { "replace_newest": false }],
+      "ctrl-w": "pane::CloseActiveItem"
+    }
+  }
+]

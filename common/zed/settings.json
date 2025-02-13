@@ -1,0 +1,27 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "assistant": {
+    "default_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "version": "2"
+  },
+  "ui_font_size": 15,
+  "buffer_font_family": "Inconsolata Nerd Font Mono",
+  "buffer_font_size": 15,
+  "theme": {
+    "mode": "dark",
+    "light": "Kanagawa Wave - No Italics",
+    "dark": "Kanagawa Wave - No Italics"
+  },
+  "vim_mode": true,
+  "base_keymap": "VSCode"
+}
