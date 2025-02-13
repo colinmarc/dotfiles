@@ -8,4 +8,5 @@ export PATH="$HOME/.cargo/bin:$PATH"
 # Slang
 export SLANG_DIR="/opt/slang"
 export PATH="$SLANG_DIR/bin:$PATH"
+export LD_LIBRARY_PATH="$SLANG_DIR/lib:$LD_LIBRARY_PATH"
 export DYLD_LIBRARY_PATH="$SLANG_DIR/lib:$DYLD_LIBRARY_PATH"
