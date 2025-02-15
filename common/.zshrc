@@ -77,3 +77,6 @@ for file in ~/.zsh/.zshrc.d/*; do
 done
 
 . "$HOME/.local/share/../bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/colinmarc/.lmstudio/bin"

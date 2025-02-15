@@ -9,18 +9,55 @@
 {
   "assistant": {
     "default_model": {
-      "provider": "copilot_chat",
-      "model": "gpt-4o"
+      "provider": "lmstudio",
+      "model": "qwen2.5-coder-14b-instruct"
     },
     "version": "2"
+  },
+  "show_edit_predictions": true,
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "rustfmt": { "extraArgs": ["+nightly"] },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        }
+      }
+    }
   },
   "ui_font_size": 15,
   "buffer_font_family": "Inconsolata Nerd Font Mono",
   "buffer_font_size": 15,
+  "current_line_highlight": "gutter",
+  "experimental.theme_overrides": {
+    "editor.document_highlight.read_background": "#363646",
+    "error.background": "#2A2A37",
+    "error.border": "#363646",
+    "warning.background": "#2A2A37",
+    "warning.border": "#363646",
+    "diagnostic.background": "#2A2A37",
+    "diagnostic.border": "#363646"
+    // "search.match_background": "#DCD7BA"
+  },
   "theme": {
     "mode": "dark",
     "light": "Kanagawa Wave - No Italics",
     "dark": "Kanagawa Wave - No Italics"
+  },
+  "gutter": {
+    "code_actions": false,
+    "runnables": false,
+    "folds": false
   },
   "vim_mode": true,
   "base_keymap": "VSCode"

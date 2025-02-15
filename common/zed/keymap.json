@@ -1,24 +1,44 @@
 [
   {
     "bindings": {
-      "left": ["workspace::ActivatePaneInDirection", "Left"],
-      "right": ["workspace::ActivatePaneInDirection", "Right"],
-      "up": ["workspace::ActivatePaneInDirection", "Up"],
-      "down": ["workspace::ActivatePaneInDirection", "Down"]
-      // "shift shift": "file_finder::Toggle"
+      "left": "workspace::ActivatePaneLeft",
+      "right": "workspace::ActivatePaneRight",
+      "up": "workspace::ActivatePaneUp",
+      "down": "workspace::ActivatePaneDown"
     }
   },
   {
     "context": "Pane",
     "bindings": {
-      "alt-[": "pane::ActivatePrevItem",
-      "alt-]": "pane::ActivateNextItem",
+      "alt-[": "editor::GoToPrevDiagnostic",
+      "alt-]": "editor::GoToDiagnostic",
       "ctrl-alt-w": ["pane::CloseCleanItems", { "close_pinned": false }]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-a": "editor::MoveToEndOfLine"
+    }
+  },
+  {
+    "context": "Editor && !edit_prediction",
+    "bindings": {
+      "alt-\\": "editor::ShowEditPrediction"
     }
   },
   {
     "context": "VimControl && !menu",
     "bindings": {
+      "space l": "workspace::ToggleLeftDock",
+      "space r": "workspace::ToggleRightDock",
+      "space p": "project_panel::ToggleFocus",
+      "space o": "outline_panel::ToggleFocus",
+      "space c a": "editor::ToggleCodeActions",
+      "space g": "git::Branch",
+      "space `": "terminal_panel::ToggleFocus",
+      "space g d": "editor::GoToDefinition",
+      "space g D": "editor::GoToDeclaration",
       "h": "vim::Left",
       "t": "vim::Right",
       "g": "vim::Up",
@@ -29,7 +49,7 @@
       "alt-t": "vim::NextWordStart",
       "alt-g": "editor::MoveToStartOfParagraph",
       "alt-m": "editor::MoveToEndOfParagraph",
-      "ctrl-d": ["editor::SelectNext", { "replace_newest": false }],
+      "ctrl-d": ["editor::SelectNext", { "replace_newest": true }],
       "ctrl-w": "pane::CloseActiveItem"
     }
   }

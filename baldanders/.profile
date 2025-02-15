@@ -13,3 +13,6 @@ export GTK_THEME=Matcha-dark-sea
 
 export PATH="$HOME/.cargo/bin:$HOME/.go/bin:$PATH"
 . "$HOME/.local/share/../bin/env"
+
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/home/colinmarc/.lmstudio/bin"
