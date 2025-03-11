@@ -10,6 +10,7 @@
     ],
     "modules-right": [
         "tray",
+        "backlight",
         "pulseaudio",
         "clock"
     ],
@@ -22,6 +23,11 @@
         "on-click": "waybar-mpris --send toggle",
         "on-click-right": "waybar-mpris --send player-next",
         "escape": true
+    },
+    "backlight": {
+    	"device": "ddcci6",
+    	"format": "{percent}% {icon}",
+    	"format-icons": ["", ""]
     },
     "pulseaudio": {
         "format": "{volume}% {icon}",

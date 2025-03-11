@@ -19,7 +19,7 @@ pamac install --no-confirm \
 	glow               \
 	fzf                \
 
-pamac build --no-confirm -k code-marketplace git-fixup protobuf-language-server-git
+pamac build --no-confirm -k git-fixup protobuf-language-server-git
 cargo install kickoff eza tealdeer procs dim-screen
 
 IFS=$'\n'
@@ -28,3 +28,14 @@ for NAME in $(find "$DOTFILES/baldanders" -type f,l -printf '%P\n'); do
 	mkdir -p $(dirname "$HOME/$NAME")
 	ln -s "$DOTFILES/baldanders/$NAME" "$HOME/$NAME"
 done
+
+# wluma
+cd /tmp
+ls wluma || git clone git@github.com:maximbaz/wluma
+cd wluma
+cargo build --release
+sudo cp target/release/wluma /usr/bin/wluma
+cp wluma.service "$HOME/.config/systemd/user/"
+systemctl --user daemon-reload
+systemctl --user enable wluma.service
+systemctl --user start wluma.service

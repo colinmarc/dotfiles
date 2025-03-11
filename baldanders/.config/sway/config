@@ -1,4 +1,5 @@
 set $mod Mod4
+set $fn XF86Fn
 # Caves of Qud directions
 set $left h
 set $down t
@@ -25,6 +26,7 @@ bindsym $mod+r mode "resize"
 bindsym $mod+d exec $menu
 bindsym $mod+s exec $power_menu
 bindsym $mod+Shift+p exec $screenshot
+bindsym $mod+Print exec $screenshot
 
 bindsym $mod+Return exec $term
 
@@ -42,6 +44,10 @@ bindsym $mod+Alt+3 output * scale 1.5
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+
+# Brightness
+bindsym $fn+Prior exec blight -d ddcci6 set +5%
+bindsym $fn+Next exec blight -d ddcci6 set -5%
 
 # Keyboard layout
 bindsym $mod+Tab input type:keyboard xkb_switch_layout next
@@ -170,10 +176,10 @@ output * background ~/Downloads/kanagawa.jpg fill
 
 # Basic color configuration using the Base16 variables for windows and borders.
 # Property Name         Border  BG      Text    Indicator Child BordeR
-client.focused          $highl  $backg  $text   $highl  $highl 
+client.focused          $highl  $backg  $text   $highl  $highl
 client.focused_inactive $backg  $backg  $text   $backg  $backg
-client.unfocused        $backg  $backg  $text   $backg  $backg  
-client.urgent           $alert  $alert  $text   $alert  $alert 
+client.unfocused        $backg  $backg  $text   $backg  $backg
+client.urgent           $alert  $alert  $text   $alert  $alert
 
 default_border pixel 1
 default_floating_border pixel 1
