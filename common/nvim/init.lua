@@ -355,6 +355,10 @@ require('lazy').setup({
         filetypes = { 'slang' }
       }
 
+      require('lspconfig').ruff.setup {
+        on_attach = on_attach,
+      }
+
       require('lspconfig').sourcekit.setup({
         on_attach = on_attach,
       })
