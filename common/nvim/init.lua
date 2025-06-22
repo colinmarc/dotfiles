@@ -6,6 +6,7 @@ if vim.g.neovide then
   vim.o.guifont = "Monaco Nerd Font:h12"
   vim.g.neovide_transparency = 0.85
   vim.g.neovide_input_macos_option_key_is_meta = 'only_left'
+  vim.g.neovide_input_use_logo = true
 end
 
 vim.g.mapleader = ' '
