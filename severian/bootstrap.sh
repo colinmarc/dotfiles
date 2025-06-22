@@ -29,5 +29,10 @@ for NAME in settings.json keybindings.json; do
 	ln -s "$DOTFILES/common/vscode/$NAME" "$HOME/Library/Application Support/Code/User/$NAME"
 done
 
+for NAME in settings.json keymap.json themes; do
+	rm -rf "$HOME/.config/zed/$NAME"
+	ln -s "$DOTFILES/common/zed/$NAME" "$HOME/.config/zed/$NAME"
+done
+
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "~/.iterm2"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
