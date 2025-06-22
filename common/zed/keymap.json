@@ -10,7 +10,7 @@
   {
     "context": "Pane",
     "bindings": {
-      "alt-[": "editor::GoToPrevDiagnostic",
+      "alt-[": "editor::GoToPreviousDiagnostic",
       "alt-]": "editor::GoToDiagnostic",
       "ctrl-alt-w": ["pane::CloseCleanItems", { "close_pinned": false }]
     }
@@ -21,10 +21,52 @@
       "ctrl-a": "editor::MoveToEndOfLine"
     }
   },
+  // Edit predition
   {
     "context": "Editor && !edit_prediction",
     "bindings": {
-      "alt-\\": "editor::ShowEditPrediction"
+      "alt-tab": "editor::ShowEditPrediction"
+    }
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "alt-tab": "editor::AcceptEditPrediction",
+      // Optional: This makes the default `alt-l` binding do nothing.
+      "alt-l": null
+    }
+  },
+  {
+    "context": "Editor && edit_prediction_conflict",
+    "bindings": {
+      "alt-tab": "editor::AcceptEditPrediction",
+      // Optional: This makes the default `alt-l` binding do nothing.
+      "alt-l": null
+    }
+  },
+  // Bind `tab` back to its original behavior.
+  {
+    "context": "Editor",
+    "bindings": {
+      "tab": "editor::Tab"
+    }
+  },
+  {
+    "context": "(VimControl && !menu) || vim_mode == replace || vim_mode == waiting",
+    "bindings": {
+      "tab": "vim::Tab"
+    }
+  },
+  {
+    "context": "vim_mode == literal",
+    "bindings": {
+      "tab": ["vim::Literal", ["tab", "\u0009"]]
+    }
+  },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "alt-tab": "editor::ComposeCompletion"
     }
   },
   {
@@ -49,7 +91,7 @@
       "alt-t": "vim::NextWordStart",
       "alt-g": "editor::MoveToStartOfParagraph",
       "alt-m": "editor::MoveToEndOfParagraph",
-      "ctrl-d": ["editor::SelectNext", { "replace_newest": true }],
+      "ctrl-d": ["editor::SelectNext", { "replace_newest": false }],
       "ctrl-w": "pane::CloseActiveItem"
     }
   }

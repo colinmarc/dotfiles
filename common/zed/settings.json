@@ -7,20 +7,34 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "assistant": {
+  "languages": {
+    "Markdown": {
+      "show_edit_predictions": false,
+      "soft_wrap": "bounded",
+      "preferred_line_length": 120
+    }
+  },
+  "agent": {
     "default_model": {
-      "provider": "lmstudio",
-      "model": "qwen2.5-coder-14b-instruct"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-latest"
     },
     "version": "2"
   },
   "show_edit_predictions": true,
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  // "show_completions_on_input": true,
   "features": {
     "edit_prediction_provider": "zed"
   },
   "lsp": {
     "rust-analyzer": {
       "initialization_options": {
+        "cargo": {
+          "features": "all"
+        },
         "rustfmt": { "extraArgs": ["+nightly"] },
         "inlayHints": {
           "maxLength": null,
@@ -37,7 +51,7 @@
   },
   "ui_font_size": 15,
   "buffer_font_family": "Inconsolata Nerd Font Mono",
-  "buffer_font_size": 15,
+  "buffer_font_size": 15.0,
   "current_line_highlight": "gutter",
   "experimental.theme_overrides": {
     "editor.document_highlight.read_background": "#363646",
