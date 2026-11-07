@@ -1,5 +1,5 @@
 # various
-export PATH="~/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 
 # Go
 export GOPATH="$HOME/.go"
