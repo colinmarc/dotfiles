@@ -14,7 +14,3 @@
 	path = ".gitconfig.aliases"
 [alias]
 	recommit = !git commit -eF \"$(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG\"
-# [core]
-	# pager = diff-so-fancy | less --tabs=4 -RF
-# [interactive]
-	# diffFilter = diff-so-fancy --patch
