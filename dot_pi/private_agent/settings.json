@@ -1,7 +1,7 @@
 {
   "lastChangelogVersion": "1.5.0",
   "defaultProvider": "anthropic",
-  "defaultModel": "claude-opus-4-8",
+  "defaultModel": "claude-opus-5-5",
   "defaultThinkingLevel": "high",
   "compaction": {
     "enabled": false
