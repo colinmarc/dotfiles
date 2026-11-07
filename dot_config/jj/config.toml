@@ -1,0 +1,17 @@
+#:schema https://docs.jj-vcs.dev/latest/config-schema.json
+
+[user]
+name = "Colin Marc"
+email = "hi@colinmarc.com"
+
+[aliases]
+switch = ["util", "exec", "--", "bash", "-c", "jj log --no-graph --color=always -r 'mine() & ~description(exact:\"\")' -T 'change_id.shortest() ++ \" \" ++ description.first_line() ++ \"\\n\"' | fzf --ansi | cut -d' ' -f1 | xargs jj edit"]
+sw = ["switch"]
+ar = ["util", "exec", "--", "bash", "-c", "jj git fetch && jj rebase -o main@origin"]
+pr = ["util", "exec", "--", "jjr"]
+review = ["util", "exec", "--", "jjr", "fetch", "--edit"]
+delegate = ["util", "exec", "--", "jj-delegate"]
+dg = ["delegate"]
+
+[ui]
+pager = "ov -F"

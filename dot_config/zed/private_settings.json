@@ -1,0 +1,297 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "preview_tabs": {
+    "enable_preview_multibuffer_from_code_navigation": true,
+    "enabled": false
+  },
+  "diff_view_style": "unified",
+  "icon_theme": {
+    "mode": "dark",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
+  "cli_default_open_behavior": "new_window",
+  "project_panel": {
+    "dock": "left"
+  },
+  "outline_panel": {
+    "dock": "left"
+  },
+  "collaboration_panel": {
+    "dock": "left"
+  },
+  "git_panel": {
+    "dock": "left"
+  },
+  "agent_servers": {
+    "pi-acp": {
+      "type": "registry"
+    },
+    "claude-acp": {
+      "type": "registry",
+      "default_config_options": {
+        "mode": "bypassPermissions",
+      },
+    },
+  },
+  "ssh_connections": [
+    {
+      "host": "baldanders",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/home/colinmarc/src/cpal"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "ultan",
+      "args": [],
+      "projects": []
+    },
+    {
+      "host": "lima-default",
+      "args": [
+        "-F",
+        "/Users/colinmarc/.lima/default/ssh.config"
+      ],
+      "projects": [
+        {
+          "paths": [
+            "/Users/colinmarc/dev/bpln/all-events"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "lima-default",
+      "args": [
+        "-F",
+        "/Users/colinmarc/.lima/default/ssh.config"
+      ],
+      "projects": [
+        {
+          "paths": [
+            "/Users"
+          ]
+        }
+      ]
+    },
+    {
+      "host": "lima-default",
+      "args": [
+        "-F",
+        "/Users/colinmarc/.lima/default/ssh.config"
+      ],
+      "projects": []
+    },
+    {
+      "host": "lima-default",
+      "args": [
+        "-o",
+        "IdentityFile=\"/Users/colinmarc/.lima/_config/user\"",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "-o",
+        "UserKnownHostsFile=/dev/null",
+        "-o",
+        "NoHostAuthenticationForLocalhost=yes",
+        "-o",
+        "PreferredAuthentications=publickey",
+        "-o",
+        "Compression=no",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "IdentitiesOnly=yes",
+        "-o",
+        "GSSAPIAuthentication=no",
+        "-o",
+        "Ciphers=\"^aes128-gcm@openssh.com,aes256-gcm@openssh.com\"",
+        "-o",
+        "User=colinmarc",
+        "-o",
+        "ControlMaster=auto",
+        "-o",
+        "ControlPath=\"/Users/colinmarc/.lima/default/ssh.sock\"",
+        "-o",
+        "ControlPersist=yes",
+        "-o",
+        "Hostname=127.0.0.1",
+        "-o",
+        "Port=60603"
+      ],
+      "projects": []
+    },
+    {
+      "host": "lima-default",
+      "args": [
+        "-o",
+        "IdentityFile=\"/Users/colinmarc/.lima/_config/user\"",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "-o",
+        "UserKnownHostsFile=/dev/null",
+        "-o",
+        "NoHostAuthenticationForLocalhost=yes",
+        "-o",
+        "PreferredAuthentications=publickey",
+        "-o",
+        "Compression=no",
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "IdentitiesOnly=yes",
+        "-o",
+        "GSSAPIAuthentication=no",
+        "-o",
+        "Ciphers=\"^aes128-gcm@openssh.com,aes256-gcm@openssh.com\"",
+        "-o",
+        "User=colinmarc",
+        "-o",
+        "ControlMaster=auto",
+        "-o",
+        "ControlPath=\"/Users/colinmarc/.lima/default/ssh.sock\"",
+        "-o",
+        "ControlPersist=yes",
+        "-o",
+        "Hostname=127.0.0.1",
+        "-o",
+        "Port=60603"
+      ],
+      "projects": []
+    }
+  ],
+  "languages": {
+    "Markdown": {
+      "show_edit_predictions": false,
+      "soft_wrap": "bounded",
+      "preferred_line_length": 120,
+    },
+    "Python": {
+      "language_servers": ["ty"],
+    },
+  },
+  "agent": {
+    "dock": "right",
+    "tool_permissions": {
+      "default": "allow",
+    },
+    "profiles": {
+      "code": {
+        "default_model": {
+          "provider": "zed.dev",
+          "model": "claude-opus-4-1",
+        },
+        "name": "Code",
+        "tools": {
+          "search_web": true,
+          "copy_path": true,
+          "create_directory": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "edit_file": true,
+          "fetch": true,
+          "list_directory": true,
+          "project_notifications": false,
+          "move_path": true,
+          "now": true,
+          "find_path": true,
+          "read_file": true,
+          "restore_file_from_disk": true,
+          "save_file": true,
+          "open": true,
+          "grep": true,
+          "terminal": true,
+          "thinking": true,
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {},
+      },
+    },
+    "default_profile": "write",
+    "inline_assistant_model": {
+      "provider": "lmstudio",
+      "model": "bonsai-8b",
+    },
+    "default_model": {
+      "effort": "high",
+      "enable_thinking": true,
+      "provider": "zed.dev",
+      "model": "claude-opus-4-6-thinking",
+    },
+  },
+  "show_edit_predictions": true,
+  "edit_predictions": {
+    "provider": "zed",
+    "mode": "subtle",
+  },
+  "show_completions_on_input": true,
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "check": {
+          "command": "clippy",
+        },
+        "cargo": {
+          "features": "all",
+        },
+        "rustfmt": { "extraArgs": ["+nightly"] },
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "enable": "skip_trivial",
+            "useParameterNames": true,
+          },
+          "closureReturnTypeHints": {
+            "enable": "always",
+          },
+        },
+      },
+    },
+    "ty": {
+      "binary": {
+        "path": "/Users/colinmarc/.local/bin/ty",
+        "arguments": ["server"],
+      },
+    },
+  },
+  "ui_font_size": 15,
+  "buffer_font_family": "Inconsolata Nerd Font Mono",
+  "buffer_font_size": 15.0,
+  "current_line_highlight": "gutter",
+  "experimental.theme_overrides": {
+    "editor.document_highlight.read_background": "#363646",
+    "error.background": "#2A2A37",
+    "error.border": "#363646",
+    "warning.background": "#2A2A37",
+    "warning.border": "#363646",
+    "diagnostic.background": "#2A2A37",
+    "diagnostic.border": "#363646",
+    // "search.match_background": "#DCD7BA"
+  },
+  "theme": {
+    "mode": "dark",
+    "light": "Catppuccin Latte - No Italics",
+    "dark": "Kanagawa Wave - No Italics",
+  },
+  "gutter": {
+    "code_actions": false,
+    "runnables": false,
+    "folds": false,
+  },
+  "vim_mode": true,
+  "base_keymap": "VSCode",
+  "file_types": {
+    "diff": ["prr"],
+  },
+}

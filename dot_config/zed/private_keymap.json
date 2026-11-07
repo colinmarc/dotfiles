@@ -1,0 +1,129 @@
+[
+  {
+    "bindings": {
+      // "left": "workspace::ActivatePaneLeft",
+      // "right": "workspace::ActivatePaneRight",
+      // "up": "workspace::ActivatePaneUp",
+      // "down": "workspace::ActivatePaneDown"
+      "ctrl-t": "terminal_panel::ToggleFocus",
+      "ctrl-alt-t": ["workspace::NewTerminal", { "local": true }],
+      "ctrl-alt-shift-t": ["workspace::NewCenterTerminal", { "local": true }],
+    },
+  },
+  {
+    "context": "Pane",
+    "bindings": {
+      "alt-[": "editor::GoToPreviousDiagnostic",
+      "alt-]": "editor::GoToDiagnostic",
+      "ctrl-alt-w": ["pane::CloseCleanItems", { "close_pinned": false }],
+      "cmd-left": "workspace::ActivatePaneLeft",
+      "cmd-right": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "ctrl-a": "editor::MoveToEndOfLine",
+    },
+  },
+  // Edit predition
+  {
+    "context": "Editor && !edit_prediction",
+    "bindings": {
+      "alt-tab": "editor::ShowEditPrediction",
+    },
+  },
+  {
+    "context": "Editor && edit_prediction",
+    "bindings": {
+      "alt-tab": "editor::AcceptEditPrediction",
+      // Optional: This makes the default `alt-l` binding do nothing.
+      "alt-l": null,
+    },
+  },
+  {
+    "context": "Editor && (edit_prediction && (showing_completions || in_leading_whitespace))",
+    "bindings": {
+      "alt-tab": "editor::AcceptEditPrediction",
+      // Optional: This makes the default `alt-l` binding do nothing.
+      "alt-l": null,
+    },
+  },
+  // Bind `tab` back to its original behavior.
+  {
+    "context": "Editor",
+    "bindings": {
+      "tab": "editor::Tab",
+      "cmd-left": "workspace::ActivatePaneLeft",
+      "cmd-right": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-left": "workspace::ActivatePaneLeft",
+      "cmd-right": "workspace::ActivatePaneRight",
+    },
+  },
+  {
+    "context": "(VimControl && !menu) || vim_mode == replace || vim_mode == waiting",
+    "bindings": {
+      "tab": "vim::Tab",
+    },
+  },
+  {
+    "context": "vim_mode == literal",
+    "bindings": {
+      "tab": ["vim::Literal", ["tab", "\u0009"]],
+    },
+  },
+  // {
+  //   "context": "Editor && !showing_completions",
+  //   "bindings": {
+  //     "shift-enter": "editor::ShowCompletions"
+  //   }
+  // },
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      // "alt-tab": "editor::ComposeCompletion"
+    },
+  },
+  // for jjr
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {
+      "cmd-shift-c": [
+        "workspace::SendKeystrokes",
+        "shift-o | space @ m e space escape cmd-/ shift-a"
+      ]
+    }
+  },
+  {
+    "context": "VimControl && !menu",
+    "bindings": {
+      "space l": "workspace::ToggleLeftDock",
+      "space r": "workspace::ToggleRightDock",
+      "space p": "project_panel::ToggleFocus",
+      "space o": "outline_panel::ToggleFocus",
+      "space c a": "editor::ToggleCodeActions",
+      "space g": "git::Branch",
+      "space `": "terminal_panel::ToggleFocus",
+      "space g d": "editor::GoToDefinition",
+      "space g D": "editor::GoToDeclaration",
+      "h": "vim::Left",
+      "t": "vim::Right",
+      "g": "vim::Up",
+      "m": "vim::Down",
+      "ctrl-g": ["editor::MoveUpByLines", { "lines": 50 }],
+      "ctrl-m": ["editor::MoveDownByLines", { "lines": 50 }],
+      "alt-h": "vim::PreviousWordStart",
+      "alt-t": "vim::NextWordStart",
+      "alt-g": "editor::MoveToStartOfParagraph",
+      "alt-m": "editor::MoveToEndOfParagraph",
+      "ctrl-d": ["editor::SelectNext", { "replace_newest": false }],
+      "ctrl-w": "pane::CloseActiveItem",
+      "ctrl-t": "terminal_panel::ToggleFocus",
+    },
+  },
+]

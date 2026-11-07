@@ -1,0 +1,19 @@
+[settings]
+idiomatic_version_file_enable_tools = []
+
+[tools]
+age = "latest"
+chezmoi = "2.74.0"
+cmake = "latest"
+"github:dalance/procs" = "latest"
+"github:noborus/ov" = "0.54.0"
+go = "latest"
+java = "latest"
+jj = "latest"
+node = "24.6.0"
+pi = "1.5.0"
+pkl = "latest"
+rust = "1.99"
+gcloud = { version = "573.0.0", os = "macos" }
+"ubi:bromanko/age-plugin-op" = { version = "latest", os = "macos" }
+"github:remko/age-plugin-se" = "0.2.1"

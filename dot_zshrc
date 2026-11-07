@@ -1,0 +1,87 @@
+alias ag="rg --no-heading"
+alias rg="rg --no-heading"
+alias ls="eza"
+alias http=xh
+
+function line {
+  cat $2 | head -n $1 | tail -1
+}
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export EDITOR='nvim'
+export HISTFILE=~/.zsh/history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt SHARE_HISTORY
+
+export CLICOLOR=1
+export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
+
+#bindkey -v
+bindkey '^R' history-incremental-search-backward
+bindkey '^[f' forward-word
+bindkey '^[b' backward-word
+
+_has() {
+  whence -p "$1" > /dev/null
+}
+
+function _prompt_jj {
+   local jj_info
+   jj_info=$(jj log --no-graph --color=always -r @ -T '
+     change_id.shortest(8)
+     ++ if(!empty, if(conflict,
+       label("conflict", "*"),
+       label("commit_id", "*")))
+     ++ " "
+     ++ label("separator",
+       if(description,
+         description.first_line().substr(0, 16) ++ if(description.first_line().len() > 16, "…"),
+         "(empty)"))
+   ' 2>/dev/null) || return
+
+   # Wrap raw ANSI escape sequences in %{...%} so zsh doesn't count them as visible chars
+   jj_info=$(echo "$jj_info" | sed 's/\x1b\[[0-9;]*m/%{&%}/g')
+   echo "${jj_info}%F{cyan} "
+ }
+
+function _set_prompt {
+  # Report exit status of last process if it was unsuccessful
+  PROMPT=$'%(?..%F{red}%?%f\n)'
+
+  # User and host, if applicable
+  if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+    PROMPT+='%F{blue}(%m)%f '
+  fi
+
+  # Path to file
+  PROMPT+='%F{cyan}%2~ '
+
+  # Current jj rev, if applicable.
+  if _has jj; then
+    PROMPT+=$(_prompt_jj)
+  fi
+
+  PROMPT+='%#%f '
+}
+
+precmd_functions+=( _set_prompt )
+
+# znap
+if [[ ! -r ~/.zsh/plugins/znap/znap.zsh ]]; then
+    mkdir -p ~/.zsh/plugins
+    git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsh/plugins/znap
+fi
+
+source ~/.zsh/plugins/znap/znap.zsh
+znap source zsh-users/zsh-autosuggestions
+
+for file in ~/.zsh/.zshrc.d/*; do
+  source $file
+done
+
+. "$HOME/.local/share/../bin/env"
+eval "$(direnv hook zsh)"
+
+eval "$(mise activate zsh --status)"

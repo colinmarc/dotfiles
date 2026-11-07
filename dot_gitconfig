@@ -1,0 +1,20 @@
+[user]
+	email = hi@colinmarc.com
+	name = Colin Marc
+	signingkey = /Users/colinmarc/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/PublicKeys/27b2bc27473b22f2fcb99ff64a8c3a26.pub
+[commit]
+	gpgsign = true
+[init]
+	defaultBranch = main
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /Users/colinmarc/.ssh/allowed_signers
+[include]
+	path = ".gitconfig.aliases"
+[alias]
+	recommit = !git commit -eF \"$(git rev-parse --show-toplevel)/.git/COMMIT_EDITMSG\"
+# [core]
+	# pager = diff-so-fancy | less --tabs=4 -RF
+# [interactive]
+	# diffFilter = diff-so-fancy --patch
