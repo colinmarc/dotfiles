@@ -77,11 +77,5 @@ fi
 source ~/.zsh/plugins/znap/znap.zsh
 znap source zsh-users/zsh-autosuggestions
 
-for file in ~/.zsh/.zshrc.d/*; do
-  source $file
-done
-
 . "$HOME/.local/share/../bin/env"
-eval "$(direnv hook zsh)"
-
 eval "$(mise activate zsh --status)"
