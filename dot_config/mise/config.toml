@@ -14,7 +14,7 @@ node = "24.6.0"
 pi = "1.5.0"
 pkl = "latest"
 rust = "1.99"
-"ubi:bromanko/age-plugin-op" = { version = "latest", os = "macos" }
+"github:bromanko/age-plugin-op" = { version = "latest", os = "macos" }
 "github:remko/age-plugin-se" = "0.2.1"
 "github:xoshbin/asyar" = { version = "0.1.1-54", prerelease = "true" }
 gh = "2.103.3"
