@@ -1,0 +1,156 @@
+theme = "kanagawa-transparent"
+
+[editor]
+line-number = "absolute"
+mouse = true
+scrolloff = 10
+cursorline = true
+color-modes = true        
+true-color = true
+rulers = []
+completion-trigger-len = 1
+auto-format = true        
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.statusline]
+left = ["spinner", "file-name", "read-only-indicator", "file-modification-indicator"]
+center = []
+right = ["diagnostics", "selections", "position", "file-type"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.lsp]
+display-messages = true
+display-inlay-hints = true
+
+[editor.indent-guides]
+render = true
+character = "┊"
+
+[editor.file-picker]
+hidden = false
+
+[keys.normal]
+# caves of qud movement
+"h" = "move_char_left"
+"t" = "move_char_right"
+"g" = "move_visual_line_up"
+"m" = "move_visual_line_down"
+"A-h" = "move_prev_word_start"
+"A-t" = "move_next_word_start"
+"A-g" = "goto_prev_paragraph"
+"A-m" = "goto_next_paragraph"
+
+"C-g" = ["page_cursor_half_up", "align_view_center"]
+"C-m" = ["page_cursor_half_down", "align_view_center"]
+
+"C-s" = ":write"
+
+"K" = "hover"
+"A-[" = "goto_prev_diag"
+"A-]" = "goto_next_diag"
+
+"D" = ["collapse_selection", "extend_to_line_end", "delete_selection"]
+"W" = ["move_char_right", "move_prev_word_start", "move_next_word_end"]
+
+";" = ":reflow"
+
+[keys.normal.G]
+"g" = "goto_file_start"
+"e" = "goto_last_line"
+"f" = "goto_file"
+"h" = "goto_line_start"
+"l" = "goto_line_end"
+"s" = "goto_first_nonwhitespace"
+"t" = "goto_window_top"
+"c" = "goto_window_center"
+"b" = "goto_window_bottom"
+"d" = "goto_definition"
+"D" = "goto_declaration"
+"y" = "goto_type_definition"
+"r" = "goto_reference"
+"i" = "goto_implementation"
+"a" = "goto_last_accessed_file"
+"m" = "goto_last_modified_file"
+"n" = "goto_next_buffer"
+"p" = "goto_previous_buffer"
+"." = "goto_last_modification"
+"j" = "move_line_down"
+"k" = "move_line_up"
+"w" = "goto_word"
+
+[keys.normal.M]
+"m" = "match_brackets"
+"s" = "surround_add"
+"r" = "surround_replace"
+"d" = "surround_delete"
+"a" = "select_textobject_around"
+"i" = "select_textobject_inner"
+
+[keys.normal.space.s]
+"f" = "file_picker"
+"g" = "global_search"
+"w" = "global_search"
+"d" = "symbol_picker"
+"D" = "workspace_symbol_picker"
+"e" = "workspace_diagnostics_picker"
+
+[keys.normal.space.g]
+"d" = "goto_definition"
+"D" = "goto_declaration"
+"r" = "goto_reference"
+"y" = "goto_type_definition"
+"i" = "goto_implementation"
+
+[keys.select]
+"h" = "extend_char_left"
+"t" = "extend_char_right"
+"g" = "extend_visual_line_up"
+"m" = "extend_visual_line_down"
+"A-h" = "extend_prev_word_start"
+"A-t" = "extend_next_word_start"
+"A-g" = "goto_prev_paragraph"
+"A-m" = "goto_next_paragraph"
+"C-g" = ["page_cursor_half_up", "align_view_center"]
+"C-m" = ["page_cursor_half_down", "align_view_center"]
+"T" = "extend_till_char"
+
+[keys.select.M]
+"m" = "match_brackets"
+"s" = "surround_add"
+"r" = "surround_replace"
+"d" = "surround_delete"
+"a" = "select_textobject_around"
+"i" = "select_textobject_inner"
+
+[keys.select.G]
+"g" = "extend_to_file_start"
+"e" = "extend_to_last_line"
+"f" = "goto_file"
+"h" = "goto_line_start"
+"l" = "goto_line_end"
+"s" = "goto_first_nonwhitespace"
+"t" = "goto_window_top"
+"c" = "goto_window_center"
+"b" = "goto_window_bottom"
+"d" = "goto_definition"
+"D" = "goto_declaration"
+"y" = "goto_type_definition"
+"r" = "goto_reference"
+"i" = "goto_implementation"
+"a" = "goto_last_accessed_file"
+"m" = "goto_last_modified_file"
+"n" = "goto_next_buffer"
+"p" = "goto_previous_buffer"
+"." = "goto_last_modification"
+"j" = "extend_line_down"
+"k" = "extend_line_up"
+"w" = "extend_to_word"
+
+[keys.insert]
+"C-s" = ["normal_mode", ":write"]

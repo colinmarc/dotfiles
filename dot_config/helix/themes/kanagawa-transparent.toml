@@ -1,0 +1,7 @@
+inherits = "kanagawa"
+
+# Drop the background so the terminal/Ghostty blur shows through.
+"ui.background" = { fg = "fujiWhite" }
+"ui.gutter" = { fg = "sumiInk6" }
+"ui.virtual.whitespace" = "sumiInk6"
+"ui.virtual.indent-guide" = "sumiInk5"

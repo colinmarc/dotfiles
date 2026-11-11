@@ -1,0 +1,46 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# LSP configuration — a lean version of the neovim lspconfig setup.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Rust: all cargo features, clippy on save, nightly rustfmt.
+[language-server.rust-analyzer.config.cargo]
+features = "all"
+
+[language-server.rust-analyzer.config.check]
+command = "clippy"
+
+[language-server.rust-analyzer.config.rustfmt]
+extraArgs = ["+nightly"]
+
+[[language]]
+name = "rust"
+auto-format = true
+
+# Python: ruff as the language server (lint + format).
+[language-server.ruff]
+command = "ruff"
+args = ["server"]
+
+[[language]]
+name = "python"
+language-servers = ["ruff"]
+auto-format = true
+
+# Lua: lua-language-server, format on save.
+[[language]]
+name = "lua"
+auto-format = true
+
+# Commit messages: 72-col text width, soft-wrap at that width, rulers at
+# 50 (subject) and 72 (body). Use `:reflow` (or A-q) to hard-wrap.
+[[language]]
+name = "git-commit"
+text-width = 72
+rulers = [51, 73]
+soft-wrap = { enable = true, wrap-at-text-width = true }
+
+[[language]]
+name = "jjdescription"
+text-width = 72
+rulers = [51, 73]
+soft-wrap = { enable = true, wrap-at-text-width = true }
