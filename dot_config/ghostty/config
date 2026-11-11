@@ -1,0 +1,37 @@
+# Quick terminal: toggle Ghostty from anywhere with cmd+enter.
+# Pressing it again hides it (same behavior as Raycast's hotkey window).
+keybind = global:cmd+enter=toggle_quick_terminal
+
+# Where the quick terminal slides in from: top | bottom | left | right | center
+quick-terminal-position = top
+
+# Keep it visible until you toggle it (don't auto-hide when it loses focus).
+# Set to "false" if you want it to disappear when you click away.
+quick-terminal-autohide = true
+
+# Size on the primary axis (height, since position is top): full screen height.
+quick-terminal-size = 100%
+
+# Disable the slide-in/out animation.
+quick-terminal-animation-duration = 0
+
+# Show it on whichever screen your mouse is on (nice for multi-monitor).
+quick-terminal-screen = mouse
+
+# Hide Ghostty from the Dock and app switcher (quick-terminal-only workflow).
+# Note: keyboard layout changes are no longer automatic while hidden.
+macos-hidden = always
+
+# Translucent background with a blur behind it.
+background-opacity = 0.85
+background-blur = true
+
+# Don't open a normal window at startup — quick terminal only.
+initial-window = false
+
+# Don't let macOS restore/reopen saved windows on launch.
+window-save-state = never
+
+# Left Option acts as Alt/Meta (for A-h/A-t/etc in helix); right Option
+# still types special characters.
+macos-option-as-alt = left
