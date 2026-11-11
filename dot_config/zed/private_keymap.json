@@ -136,7 +136,8 @@
 
       "shift-t": ["vim::PushFindForward", { "before": true, "multiline": true }],
       "shift-m": "vim::PushHelixMatch",
-
+      "shift-d": "editor::DeleteToEndOfLine",
+      "shift-w": "editor::SelectNext",
       // goto menu
       "shift-g": null,
       "shift-g g": "vim::StartOfDocument",

@@ -169,6 +169,23 @@
         "Port=60603"
       ],
       "projects": []
+    },
+    {
+      "host": "oldmbp",
+      "username": "colinmarc",
+      "args": [],
+      "projects": [
+        {
+          "paths": [
+            "/Users/colinmarc/dev/bpln/all-events"
+          ]
+        },
+        {
+          "paths": [
+            "/Users/colinmarc/dev/bpln/interviews/michaeljklein-transcripts"
+          ]
+        }
+      ]
     }
   ],
   "languages": {

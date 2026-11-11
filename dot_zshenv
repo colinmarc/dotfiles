@@ -1,3 +1,5 @@
+export SSH_SK_PROVIDER=/usr/lib/ssh-keychain.dylib
+
 # various
 export PATH="$HOME/.local/bin:$PATH"
 
