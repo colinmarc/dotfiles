@@ -1,0 +1,9 @@
+Host *
+  IdentityFile ~/.ssh/id_ecdsa_sk_rk_ssh-key
+  AddKeysToAgent yes
+
+Host oldmbp
+    ProxyCommand pigeons fly --stdio d51b074a518c8c6957f4909311ad1177a5450ce9d04bbdfe72ab119629f201a0
+    UserKnownHostsFile /dev/null
+    StrictHostKeyChecking no
+	ForwardAgent yes

@@ -13,9 +13,11 @@
   },
   "theme": "dark",
   "packages": [
-    "npm:pi-web-access@0.47.0"
+    "npm:pi-web-access@0.47.0",
+    "npm:pi-session-search"
   ],
   "extensionChangelogVersions": {
-    "{\"source\":\"npm:pi-web-access@0.47.0\",\"scope\":\"user\"}": "0.47.0"
+    "{\"source\":\"npm:pi-web-access@0.47.0\",\"scope\":\"user\"}": "0.47.0",
+    "{\"source\":\"npm:pi-session-search\",\"scope\":\"user\"}": "1.6.1"
   }
 }

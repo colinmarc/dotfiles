@@ -1,3 +1,0 @@
-Host *
-  IdentityFile ~/.ssh/id_ecdsa_sk_rk_ssh-key
-  AddKeysToAgent yes

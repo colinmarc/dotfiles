@@ -35,3 +35,7 @@ window-save-state = never
 # Left Option acts as Alt/Meta (for A-h/A-t/etc in helix); right Option
 # still types special characters.
 macos-option-as-alt = left
+
+# Over ssh, install Ghostty's terminfo on the remote host (ssh-terminfo), or
+# fall back to TERM=xterm-256color if that's not possible (ssh-env).
+shell-integration-features = ssh-terminfo,ssh-env

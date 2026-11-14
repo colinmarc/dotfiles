@@ -124,6 +124,9 @@
       "ctrl-d": ["editor::SelectNext", { "replace_newest": false }],
       "ctrl-w": "pane::CloseActiveItem",
       "ctrl-t": "terminal_panel::ToggleFocus",
+
+      ";": "vim::Rewrap",
+      "shift-r": "editor::Rename",
     },
   },
   {
@@ -138,6 +141,20 @@
       "shift-m": "vim::PushHelixMatch",
       "shift-d": "editor::DeleteToEndOfLine",
       "shift-w": "editor::SelectNext",
+
+      // Clipboard: Zed's helix mode hardcodes the default register to never
+      // touch the system clipboard, so route yank/delete/change through the
+      // "+" register. (SendKeystrokes falls through to the default binding
+      // when it re-sends its own trigger key.)
+      "\"": "vim::PushRegister", // not bound in helix_select by default
+      "y": ["workspace::SendKeystrokes", "\" + y"],
+      "d": ["workspace::SendKeystrokes", "\" + d"],
+      "c": ["workspace::SendKeystrokes", "\" + c"],
+      // Paste from the clipboard, replacing the selection(s) if any.
+      "p": "editor::Paste",
+      // Paste before the selection without replacing it.
+      "shift-p": ["workspace::SendKeystrokes", "\" + shift-p"],
+
       // goto menu
       "shift-g": null,
       "shift-g g": "vim::StartOfDocument",

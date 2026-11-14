@@ -60,6 +60,9 @@ hidden = false
 
 ";" = ":reflow"
 
+# paste over the selection instead of after it
+"p" = "replace_with_yanked"
+
 [keys.normal.G]
 "g" = "goto_file_start"
 "e" = "goto_last_line"
@@ -119,6 +122,7 @@ hidden = false
 "C-g" = ["page_cursor_half_up", "align_view_center"]
 "C-m" = ["page_cursor_half_down", "align_view_center"]
 "T" = "extend_till_char"
+"p" = "replace_with_yanked"
 
 [keys.select.M]
 "m" = "match_brackets"
